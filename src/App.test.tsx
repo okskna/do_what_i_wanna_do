@@ -1,12 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
+import { ThemeProvider } from 'styled-components';
 
-test('renders learn react link', () => {
+import App from './App';
+import { store } from './app/store';
+import { GlobalStyle } from './styles';
+import { theme } from './styles/theme';
+
+test('renders App', () => {
   render(
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={{ theme }}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
     </Provider>
   );
 
